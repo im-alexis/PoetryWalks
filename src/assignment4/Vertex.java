@@ -1,5 +1,6 @@
 package assignment4;
 
+import java.util.HashMap;
 import java.util.Map;
 
 
@@ -9,6 +10,7 @@ public class Vertex <T> {
 
     public Vertex (T obj){
         this.name = obj;
+        edges = new HashMap<>();
     }
 
     public void addEdge (T destination){
@@ -36,6 +38,7 @@ public class Vertex <T> {
     public T getName(){ // return the name
         return name;
     }
+
 
 
 }
