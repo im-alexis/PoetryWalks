@@ -6,13 +6,14 @@ import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
+import java.util.HashSet;
+import java.util.Objects;
+import java.util.Scanner;
+
 
 public class GraphPoet {
 
-
+    private ArrayList<Vertex<String>> graph = new ArrayList<>();
     /**
      *
      * @param corpus text file from which to derive the poet's affinity graph
@@ -22,6 +23,13 @@ public class GraphPoet {
     public GraphPoet(File corpus) throws IOException {
 
         /* Read in the File and place into graph here */
+        Scanner scan = new Scanner(corpus);
+
+        while (scan.hasNextLine()){
+            String [] line = (scan.nextLine()) .split(" "); // the line would be split at every world
+
+
+        }
     }
 
     /**
