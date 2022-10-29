@@ -1,7 +1,13 @@
+/* EE422C Assignment #4 submission by
+ * Alexis Torres
+ * at39625
+ */
+
 package assignment4;
 
 import java.util.HashMap;
 import java.util.Map;
+import static java.lang.Integer.MAX_VALUE;
 
 
 public class Vertex <T> {
@@ -10,7 +16,7 @@ public class Vertex <T> {
 
     public Vertex (T obj){
         this.name = obj;
-        edges = new HashMap<>();
+        edges = new HashMap<>(); //hash map for the edges
     }
 
     public void addEdge (T destination){
@@ -29,6 +35,34 @@ public class Vertex <T> {
         else{
             edges.remove(destination);
         }
+    }
+    public T getHighestWeightEdge(){// return the highest weighted edge, (seem like it would be helpful)
+        T highest = null;
+        Integer highestValue = 0;
+        if(!edges.isEmpty()) {
+            for (Map.Entry<T, Integer> entry : edges.entrySet()) {
+                Integer value = entry.getValue();
+                if (value > highestValue) {
+                    highest = entry.getKey();
+
+                }
+            }
+        }
+        return highest;
+    }
+    public T getLowestWeightEdge(){ // return the lowest weighted edge, (seems like it would come of use later)
+        T lowest = null;
+        Integer lowestValue = MAX_VALUE ;
+        if(!edges.isEmpty()) {
+            for (Map.Entry<T, Integer> entry : edges.entrySet()) {
+                Integer value = entry.getValue();
+                if (value < lowestValue) {
+                    lowest = entry.getKey();
+
+                }
+            }
+        }
+        return lowest;
     }
 
     public Map<T, Integer> getEdges(){ //return the edges map for this vertex
