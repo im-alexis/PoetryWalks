@@ -39,6 +39,7 @@ public class GraphPoet {
             if(graph.get(graphGetSpecficVertexIndex(entry.getKey())).getEdges().containsKey(word2) // check if potential candidate vertex contains an edge to the next word (ie word2)
                     && (graph.get(graphGetSpecficVertexIndex(entry.getKey())).getEdges().get(word2)) > weight){ // if as you are looping something with a higher weight apears then it becomes the bridge word
                 bridge = graph.get(graphGetSpecficVertexIndex(entry.getKey())).getName();
+                weight = graph.get(graphGetSpecficVertexIndex(entry.getKey())).getEdges().get(word2);
             }
         }
         return bridge;
