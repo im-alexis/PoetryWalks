@@ -16,7 +16,9 @@ public class Main {
          * @throws IOException if a poet corpus file cannot be found or read
          */
         public static void main(String[] args) throws IOException {
-            final GraphPoet nimoy = new GraphPoet(new File("src/Assignment4TestCases/Test2/corpus.txt"));
-            System.out.println(nimoy.poem(new File("src/Assignment4TestCases/Test2/input.txt")));
+//            final GraphPoet nimoy = new GraphPoet(new File("src/Assignment4TestCases/Test3/corpus.txt"));
+//            System.out.println(nimoy.poem(new File("src/Assignment4TestCases/Test3/input.txt")));
+            final GraphPoet nimoy = new GraphPoet(new File("corpus.txt"));
+            System.out.println(nimoy.poem(new File("input.txt")));
         }
 }
