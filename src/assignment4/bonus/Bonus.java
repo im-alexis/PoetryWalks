@@ -2,12 +2,14 @@
  * Alexis Torres
  * at39625
  */
-package assignment4;
+package assignment4.bonus;
 
 import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
+
+import assignment4.GraphPoet;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;

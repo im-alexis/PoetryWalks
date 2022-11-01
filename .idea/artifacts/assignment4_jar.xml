@@ -3,8 +3,8 @@
     <output-path>$PROJECT_DIR$/out/artifacts/assignment4_jar</output-path>
     <root id="archive" name="assignment4.jar">
       <element id="module-output" name="assignment4" />
-      <element id="extracted-dir" path="$PROJECT_DIR$/src/jsoup-1.15.3.jar" path-in-jar="/" />
-      <element id="file-copy" path="$PROJECT_DIR$/src/assignment4/bonus_input.txt" />
+      <element id="extracted-dir" path="$PROJECT_DIR$/src/assignment4/bonus/jsoup-1.15.3.jar" path-in-jar="/" />
+      <element id="file-copy" path="$PROJECT_DIR$/src/assignment4/bonus/bonus_input.txt" />
     </root>
   </artifact>
 </component>
