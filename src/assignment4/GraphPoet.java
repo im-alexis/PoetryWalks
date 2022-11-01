@@ -20,7 +20,8 @@ public class GraphPoet {
         String[] temp = input.split(" ");
         ArrayList<String> temp2 = new ArrayList<>();
         for(int i = 0; i < temp.length; i++){
-            temp[i] = temp[i].replaceAll(" ", "");
+
+            temp[i] = temp[i].replaceAll("[^a-zA-Z0-9]", "");
             if(!temp[i].equals("") && !temp[i].contains("\t") && !temp[i].contains(" ") ){
                 temp2.add(temp[i]);
             }
@@ -65,6 +66,7 @@ public class GraphPoet {
 
         /* Read in the File and place into graph here */
         Scanner scan = new Scanner(corpus);
+        String lastWord = "";
         while (scan.hasNextLine()){
             String input = scan.nextLine(); // the line would be split at every world
             ArrayList <String> line = cleanInput(input);
@@ -73,23 +75,23 @@ public class GraphPoet {
                     Vertex <String> temp = new Vertex<>(line.get(i).toLowerCase());
                     graph.add(temp);
                     temp.addEdge(line.get(i+1).toLowerCase());
+                    if(i == 0 && !lastWord.equals("")){
+                        graph.get(graphGetSpecficVertexIndex(lastWord.toLowerCase())).addEdge(line.get(0).toLowerCase());
+                    }
                 }
                 else{
                     graph.get(graphGetSpecficVertexIndex(line.get(i).toLowerCase())).addEdge(line.get(i+1).toLowerCase()); // else just add an edge to the vertex that exists
+                   if(i == 0 && !lastWord.equals("")){
+                       graph.get(graphGetSpecficVertexIndex(lastWord.toLowerCase())).addEdge(line.get(0).toLowerCase());
+                   }
                 }
             }
-            /*
-            * This next block just adds the last word to the graph and loops it back to the first word with the same idea as above
-            *
-            * */
             if(!graphHasVertex(line.get(line.size() - 1).toLowerCase())){
                 Vertex <String> temp = new Vertex<>(line.get(line.size() - 1).toLowerCase());
                 graph.add(temp);
-                temp.addEdge(line.get(0).toLowerCase());
             }
-            else{
-                graph.get(graphGetSpecficVertexIndex(line.get(line.size() - 1).toLowerCase())).addEdge(line.get(0).toLowerCase());
-            }
+
+            lastWord = line.get(line.size()-1).toLowerCase();
         }
         scan.close();
     }
@@ -116,7 +118,10 @@ public class GraphPoet {
                     if(i == 0){  // check if it's the first word in the line
                         poem = line.get(i) ;
                         String bridge = findBridgeWord(graph.get(graphGetSpecficVertexIndex(line.get(i).toLowerCase())), line.get(i+1).toLowerCase()); // call a function that get the bridge word
-                        poem = poem + " " + bridge;
+                        if(!bridge.equals("")){ // if the bridge word was found do something, else don't do anything
+                            poem = poem + " " + bridge;
+                        }
+
                     }
                     else {
                         poem = poem + " " + line.get(i);
@@ -128,7 +133,7 @@ public class GraphPoet {
                     }
                 }
                 else {
-                    if(i== 0){
+                    if(i == 0){
                         poem = poem + line.get(i);
                     }
                     else {
